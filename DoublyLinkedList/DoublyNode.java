@@ -1,4 +1,4 @@
-package DoubleLinkedList;
+package DoublyLinkedList;
 
 public class DoublyNode {
     public int value;
