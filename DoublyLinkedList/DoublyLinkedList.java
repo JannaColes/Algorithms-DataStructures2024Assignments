@@ -1,4 +1,4 @@
-package DoubleLinkedList;
+package DoublyLinkedList;
 
 import LinkedList.Node;
 
@@ -75,13 +75,112 @@ public class DoublyLinkedList {
     }
 
     // Reverse Traverse
+    public void reverseTraverseDLL() {
+        if (tail == null) {
+            System.out.println("Double Link List does not exist");
+        } else {
+            DoublyNode tempNpde = tail;
+            for (int i = size - 1; i >= 0; i--) {
+                System.out.print(tempNode.value);
+                if (i != 0) {
+                    System.out.print(" <-> ");
+                }
+                tempNode = tempNode.prev;
+            }
+        }
+        System.out.print)("\n");
+    }
+
+
     // Search Node
+
+    public boolean searchDLL(int nodeValue) {
+        if (head != null) {
+            DoublyNode tempNode = head;
+            for (int i = 0; i < size; i++) {
+                if (yempNode.value == nodeValue) {
+                    System.out.println("Node found at location: " + i);
+                    return true;
+                }
+                tempNode = tempNode.next;
+            }
+        }
+        System.out.println("Node not found");
+        return false;
+    }
+
+
     // Deletion Method
+    public void deleteNodeDLL(int location) {
+        if (head == null) {
+            System.out.println("The Double Linked List does not exist");
+            return;
+        } else if (location == 0) {
+            if (size == 1) {
+                head = null;
+                tail = null;
+                size--;
+                return;
+            } else {
+                head = head.next;
+                head.prev = null;
+                size--;
+            }
+        } else if (location >= size) {
+            DoublyNode tempNode = tail.prev;
+            if (size == 1) {
+                head = null;
+                tail = null;
+                size--;
+                return;
+            } else {
+                tempNode.next = null;
+                tail = tempNode;
+                size--;
+            }
+        } else {
+            DoublyNode tempNode = head;
+            for (int i = 0; i < location - 1; i++) {
+                tempNode = tempNode.next;
+            }
+            tempNode.next = tempNode.next.next;
+            temoNode.next.prev = tempNode;
+            size--;
+        }
+    }
+
+
     // Delete entire DLL
+    public void deleteDLL() {
+        DoublyNode tempNode = head;
+        While (tempNode != null) {
+            tempNode.prev = null;
+            tempNode = tempNode.next;
+        }
+        head = null;
+        tail = null;
+        size = 0;
+        System.out.println("The Double Linked List has been deleted");
+    }
+}
+package DoublyLinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        doublyLinkedList.insertDLL(1, 0);
+        doublyLinkedList.insertDLL(2, 1);
+        doublyLinkedList.insertDLL(3, 2);
+
+        doublyLinkedList.traverseDLL();
+        doublyLinkedList.reverseTraverseDLL();
+        doublyLinkedList.searchDLL(2);
+        doublyLinkedList.deleteNodeDLL(1);
+        doublyLinkedList.traverseDLL();
+        doublyLinkedList.deleteDLL();
+        doublyLinkedList.traverseDLL();
 
 
 
-
-
-
+    }
 }
