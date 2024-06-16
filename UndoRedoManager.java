@@ -1,4 +1,4 @@
-package DoubleLinkedList;
+package DoublyLinkedList;
 
 /**
  * Undo/Redo Functionality: In applications that support undo/redo functionality, a doubly linked list can be used to
@@ -39,6 +39,22 @@ public class UndoRedoManager<T> {
 
     //Implement Redo Operation
 
+    public T redo() {
+        if (currentState == null) {
+            System.out.println("No State to redo");
+            return null;
+        }
+
+        Node nextState = currentState.next;
+        if (nextState == null) {
+            System.out.println("No state to redo");
+            return null;
+        } else {
+            currentState = nextState;
+        }
+        return currentState.state;
+    }
+
 
     public void performAction (T newState){
         //create a new node for the new task
@@ -77,6 +93,11 @@ public class UndoRedoManager<T> {
         undoRedoManager.undo();
         System.out.println("Current state: " + undoRedoManager.currentState.state);
 
+        undoRedoManager.undo();
+        System.out.println("Current state: " + undoRedoManager.currentState.state);
+
+        undoRedoManager.undo();
+        System.out.println("Current state: " + undoRedoManager.currentState.state);
 
 
 
