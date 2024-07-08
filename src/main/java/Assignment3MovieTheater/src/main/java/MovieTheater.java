@@ -1,3 +1,5 @@
+package Assignment3MovieTheater.src.main.java;
+
 public class MovieTheater {
     private char[][] seats;
 
